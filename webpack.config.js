@@ -12,6 +12,12 @@ module.exports = {
       react: path.join(__dirname, 'node_modules', 'react'),
     },
   },
+  devServer: {
+  // ...
+  host: 'localhost',
+  port: 3000,
+  // ...
+},
   module: {
     rules: [
       {
