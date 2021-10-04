@@ -1,32 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "../Styles/DisplayCarrierList.css"
+import CarrierListTable from '../DisplayCarrierList_Components/CarrierListTable.js'
 
 const DisplayCarrierList = () => {
 
   const [carrierData, setCarrierData] = useState('')
-  // IP in "prod" mode
 
   useEffect(() => {
   	getCarrierData()
   }, [])
 
+  // IP in "prod" mode
   const getCarrierData = () => {
       axios
         .get(`http://localhost:3001/api/v1/carriers`)
         .then((response) => {
-          console.log(response)
           setCarrierData(response.data)
         })
         .catch((error) => {
           console.log(error);
         })
   };
-
+  console.log(carrierData)
   return (
-  	<div>
-      {carrierData ? carrierData.map(x => {
-      	<div>{x.legal_name}</div>
-      }) : ''}
+  	<div id="carrier-list-container">
+  		<CarrierListTable carrierData={carrierData} />
     </div>
   );
 };

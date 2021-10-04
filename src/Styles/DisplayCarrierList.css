@@ -1,0 +1,17 @@
+/* DisplayCarrierList.js */
+
+#carrier-list-container{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-wrap: wrap;
+}
+
+/* CarrierListTable.js */
+
+#carrier-info-container{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	background-color: snow;
+}
