@@ -12,9 +12,9 @@ const CarrierListTable = (props) => {
 	const handleDropDown = (e, id) => {
 		setIsClicked(true)
 		setCompanyId(id)
-		props.carrierData.forEach(y => {
-			if (y.id === id){
-				setDropDownData(y)
+		props.carrierData.forEach(x => {
+			if (x.id === id){
+				setDropDownData(x)
 			}
 		})
 	}
@@ -27,17 +27,20 @@ const CarrierListTable = (props) => {
       					<th>DOT/MC</th>
       					<th>Company Name/DBA Name</th>
       					<th>Contact</th>
-      					<th>State</th>
       					<th>Driver Count</th>
       					<th>Power Units</th>
       				</tr>
-      			{props.carrierData ? props.carrierData.map(x => {
-      				return <div id="drop-down-container">
+      			{props.carrierData ? props.carrierData.map((x, i) => {
+      				return <div key={i} id="drop-down-container">
       				<tr key={x.id} onClick={(e) => handleDropDown(e, x.id)}>
-      					<td>{x.dot_number}</td>
+      					<td >{x.dot_number}</td>
       					<td>{x.legal_name}</td>
-      					<td>{x.telephone}</td>
-      					<td>{x.phy_state}</td>
+      					<td>
+      						<div id="contact-container">
+      							<div>{x.telephone}</div>
+      							<div>{x.email_address}</div>
+      						</div>
+      					</td>
       					<td>{x.driver_total}</td>
       					<td>{x.nbr_power_unit}</td>
       				</tr>
