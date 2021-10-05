@@ -19,6 +19,14 @@ const CarrierListTable = (props) => {
 		})
 	}
 
+	const trIsClicked = (id) => {
+		if (id === companyId){
+			return "silver"
+		} else{
+			return false
+		}
+	}
+
 	return(
       <div id="carrier-info-container">
       	<table id="carrier-list-table">
@@ -32,13 +40,13 @@ const CarrierListTable = (props) => {
       				</tr>
       			{props.carrierData ? props.carrierData.map((x, i) => {
       				return <div key={i} id="drop-down-container">
-      				<tr key={x.id} onClick={(e) => handleDropDown(e, x.id)}>
+      				<tr id={trIsClicked(x.id)} key={x.id} onClick={(e) => handleDropDown(e, x.id)}>
       					<td >{x.dot_number}</td>
       					<td>{x.legal_name}</td>
       					<td>
       						<div id="contact-container">
       							<div>{x.telephone}</div>
-      							<div>{x.email_address}</div>
+      							<div className="opacity">{x.email_address}</div>
       						</div>
       					</td>
       					<td>{x.driver_total}</td>
